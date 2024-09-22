@@ -1,11 +1,9 @@
-/*** Change Box Model *****/
 *,
 *:before,
 *:after {
   box-sizing: border-box;
 }
 
-/* Global Styles */
 body {
   font-family: 'Arial', sans-serif;
   margin: 0;
@@ -16,7 +14,6 @@ body {
   width: 100%;
 }
 
-/* Header Styles */
 #top-header {
   background-color: white;
   color: black;
@@ -44,7 +41,6 @@ body {
   text-decoration: underline;
 }
 
-/* Navigation Styles */
 nav {
   background-color: black;
   padding: 2px 0;
@@ -70,12 +66,11 @@ nav ul li:hover {
   cursor: pointer; 
 }
 
-/* Main Content Styles */
 main {
   padding: 20px;
 }
 
-h1{
+h1 {
   font-size: 40px;
 }
 
@@ -85,7 +80,6 @@ h1{
   background-color: transparent; 
 }
 
-/* Car Banner Text Section */
 .car-image {
   display: flex; 
   justify-content: center; 
@@ -98,29 +92,27 @@ h1{
   background-color: transparent; 
 }
 
-/* Car Info Banner */
 .car-banner {
   position: absolute;
-  top: 37%; /* Adjust as needed for the desired placement */
-  left: 22%; /* Center the banner relative to the 75% width */
-  width:30%;
+  top: 37%; 
+  left: 22%; 
+  width: 30%;
   background-color: rgba(255, 255, 255, 0.8); 
   padding: 20px;
-  text-align: left; /* Align text to the left */
+  text-align: left; 
   z-index: 1;
 }
 
 .car-banner h2 {
   font-size: 2rem;
   margin-left: 30%;
-  
 }
 
 .car-banner p {
   font-size: 1.7rem;
-  width:100%;
+  width: 100%;
   margin: 2px 30%;
-  padding:5px;
+  padding: 5px;
 }
 
 .hero-banner {
@@ -129,38 +121,38 @@ h1{
   border-bottom-right-radius: 6px;
 }
 
-
 .features {
-  display: flex; /* Enables the flexbox layout */
-  justify-content: space-between; /* Space between columns */
-  gap: 20px; /* Adds space between the two columns */
-  /* margin-top: 20px; */
+  display: flex; 
+  justify-content: space-between; 
+  gap: 20px; 
 }
 
-.upgrades, .reviews {
-  flex: 1; /* Ensures that each column takes equal width */
+.upgrades,
+.reviews {
+  flex: 1; 
   margin-top: -200px;
   margin-bottom: 20px;
 }
-.upgrades h2, .reviews h2{
-  padding:10px;
+
+.upgrades h2,
+.reviews h2 {
+  padding: 10px;
   margin-bottom: 35px;
-  font-size:2rem
-  
+  font-size: 2rem;
 }
 
 .upgrades-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Two-column layout for upgrades */
-  gap: 45px; /* Adds spacing between grid items */
+  grid-template-columns: 1fr 1fr; 
+  gap: 45px; 
 }
 
 .upgrade-item {
-  position: relative; /* Enable positioning for child elements */
-  background-color: #0073A8; /* Blue background for upgrades */
+  position: relative; 
+  background-color: #0073A8; 
   padding: 40px;
   text-align: center;
-  color: white; /* White text */
+  color: white; 
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
 }
@@ -180,20 +172,16 @@ h1{
   color: #ffcc00; 
 }
 
-
 .reviews ul {
   padding: 20px;
- 
 }
 
 .reviews ul li {
   padding: 10px;
   margin: 10px 0;
   font-size: 1.5rem;
-  
 }
 
-/* Footer Styles */
 footer {
   display: flex;
   background-color: white;
@@ -209,12 +197,7 @@ footer {
   font-size: 15px;
 }
 
-
-/* Media Queries for Responsive Design */
-/* Mobile View: Max-width 768px */
 @media (max-width: 768px) {
-
-  /* Header Adjustments */
   #top-header {
     padding: 10px 15px;
     margin: 10px auto;
@@ -227,30 +210,25 @@ footer {
   h1 {
     font-size: 25px;
   }
-  .features h2{
+
+  .features h2 {
     font-size: 25px;
   }
 
- /* Car Image Section */
-.car-image {
-  min-height: 20vh; /* Adjust height for smaller screens */
-  margin: 0 auto; /* Center the image */
-  width: 100%; /* Limit width for larger screens */
-  display: block; /* Ensure it behaves like a block element */
-  object-fit: cover; /* Maintain aspect ratio and fill the area */
- 
+  .car-image {
+    min-height: 20vh; 
+    margin: 0 auto; 
+    width: 100%; 
+    display: block; 
+    object-fit: cover; 
+  }
 
-}
-
-
-  /* Car Banner Adjustments */
   .car-banner {
     left: 4%;
     width: 42%;
     padding: 10px;
-    top: 35%; /* Decrease this value to lift it up */
-}
-
+    top: 35%; 
+  }
 
   .car-banner h2 {
     font-size: 1.2rem;
@@ -272,48 +250,45 @@ footer {
     font-size: 0.8rem;
   }
 
-  /* Reviews (Features) Section - Now on top */
   .features {
-    order: 1; /* Place reviews (features) first */
-    flex-direction: column; /* Stack features vertically */
-    align-items: center; /* Center content */
+    order: 1; 
+    flex-direction: column; 
+    align-items: center; 
     margin-top: 20px;
     margin-bottom: 20px;
   }
 
   .features ul {
-    padding: 0; /* Remove unnecessary padding */
+    padding: 0; 
   }
 
   .features ul li {
-    background-color: white; /* Light background for features */
+    background-color: white; 
     padding: 15px;
     margin-bottom: 10px;
-    font-size: 1.2rem; /* Slightly smaller font for mobile */
+    font-size: 1.2rem; 
     border-radius: 5px;
     text-align: left;
   }
 
-  .reviews{
+  .reviews {
     margin-top: 20px;
   }
 
-  /* Upgrades Section - Now below */
   .upgrades {
-    order: 2; /* Place upgrades after reviews */
+    order: 2; 
     margin-top: 20px;
   }
 
   .upgrades-grid {
-    grid-template-columns: 1fr; /* Single column for upgrades */
-    gap: 50px; /* Adjust gap for smaller screens */
+    grid-template-columns: 1fr; 
+    gap: 50px; 
   }
 
   .upgrade-item {
-    padding: 30px; /* Reduce padding for smaller screens */
+    padding: 30px; 
   }
 
-  /* Footer Adjustments */
   footer {
     text-align: center;
     padding: 15px 0;
