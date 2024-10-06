@@ -41,6 +41,16 @@ body {
   text-decoration: underline;
 }
 
+nav ul li a {
+  text-decoration: none;
+  color: white; /* Ensures the links are white */
+}
+
+nav ul li a:hover {
+  color: #ffcc00; /* Optional: Change the color on hover */
+}
+
+/* Your existing styles */
 nav {
   background-color: black;
   padding: 2px 0;
@@ -54,17 +64,17 @@ nav ul {
   margin: 0;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap; /* Allows items to wrap to the next line if they overflow */
 }
-
 nav ul li {
-  padding: 15px 20px;
-  color: white; 
+  padding: 15px 20px; 
 }
 
 nav ul li:hover {
   background-color: #495057;
   cursor: pointer; 
 }
+
 
 main {
   padding: 20px;
@@ -74,11 +84,11 @@ h1 {
   font-size: 40px;
 }
 
-.dmc-delorean img {
+/* .dmc-delorean img {
   width: 100%;
   max-width: 400px;
   background-color: transparent; 
-}
+} */
 
 .car-image {
   display: flex; 
@@ -94,7 +104,7 @@ h1 {
 
 .car-banner {
   position: absolute;
-  top: 37%; 
+  top: 38%; 
   left: 22%; 
   width: 30%;
   background-color: rgba(255, 255, 255, 0.8); 
@@ -182,6 +192,105 @@ h1 {
   font-size: 1.5rem;
 }
 
+/* Inventory display grid */
+#inv-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+#inv-display li {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+#inv-display li:hover {
+  transform: scale(1.05);
+}
+
+#inv-display img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+.namePrice {
+  margin-top: 10px;
+}
+
+.namePrice h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.namePrice span {
+  font-size: 1.25rem;
+  color: #0073A8;
+  font-weight: bold;
+}
+
+/* Vehicle Detail Styling */
+.vehicle-detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.vehicle-info {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 80%;
+}
+
+.vehicle-info img {
+  max-width: 300px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vehicle-details {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.vehicle-details p {
+  font-size: 1.2rem;
+  margin: 10px 0;
+}
+
+.vehicle-details strong {
+  color: #0073A8;
+}
+
+/* Individual vehicle listing styles */
+.car-listing {
+  display: flex;
+  flex-direction: row; /* Side by side */
+  align-items: flex-start;
+}
+
+.car-listing img {
+  width: 50%; /* Image takes up half the width */
+  margin-right: 20px;
+}
+
+.car-information {
+  width: 50%; /* Information takes up the other half */
+}
+
 footer {
   display: flex;
   background-color: white;
@@ -202,9 +311,13 @@ footer {
     padding: 10px 15px;
     margin: 10px auto;
   }
-
+ 
   nav ul li {
-    padding: 9px 10px;
+    padding: 10px 5px; 
+  }
+
+  nav ul li a {
+    font-size: 14px; 
   }
 
   h1 {
@@ -215,11 +328,9 @@ footer {
     font-size: 25px;
   }
 
-  .car-image {
-    min-height: 20vh; 
-    margin: 0 auto; 
+  .car-image img {
     width: 100%; 
-    display: block; 
+    height: auto; 
     object-fit: cover; 
   }
 
@@ -272,7 +383,7 @@ footer {
   }
 
   .reviews {
-    margin-top: 20px;
+    margin-bottom: -30px;
   }
 
   .upgrades {
@@ -289,6 +400,62 @@ footer {
     padding: 30px; 
   }
 
+  .car-listing {
+    display: flex;
+    flex-direction: column; /* Image on top, info below */
+    align-items: center;
+  }
+
+  .car-listing img {
+    width: 100%; /* Image takes full width */
+    margin-bottom: 20px;
+  }
+
+  .car-information {
+    width: 100%; /* Information takes full width below the image */
+  }
+}
+
+/* Individual vehicle listing styles */
+.car-listing {
+  margin-top: 20px;
+}
+
+.car-listing img {
+  max-width: 100%;
+  height: auto;
+}
+
+.car-information {
+  margin-top: 20px;
+}
+
+.car-information h2 {
+  color: #1a5f7a;
+  margin-bottom: 10px;
+}
+
+.car-information .description {
+  margin-top: 20px;
+}
+
+.car-information dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+}
+
+.car-information dt {
+  font-weight: bold;
+}
+
+footer a {
+  font-size: 0.8rem; 
+  /* margin-top: 2px;  */
+  display: block; 
+  margin-left: 15px;
+}
+
   footer {
     text-align: center;
     padding: 15px 0;
@@ -297,4 +464,4 @@ footer {
   .copyright {
     font-size: 12px;
   }
-}
+
