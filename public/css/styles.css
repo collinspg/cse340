@@ -5,8 +5,7 @@
 }
 
 body {
-  font-family: 'Arial', sans-serif;
-  margin: 0;
+  font-family: 'Arial', sans-serif; 
   padding: 0;
   background-color: #ffffff; 
   color: #333;
@@ -47,7 +46,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: #ffcc00; /* Optional: Change the color on hover */
+  color: #ffcc00; 
 }
 
 /* Your existing styles */
@@ -82,13 +81,12 @@ main {
 
 h1 {
   font-size: 40px;
+  font-family: 'Georgia', serif;
 }
 
-/* .dmc-delorean img {
-  width: 100%;
-  max-width: 400px;
-  background-color: transparent; 
-} */
+h2{
+  font-family: 'Georgia', serif;
+}
 
 .car-image {
   display: flex; 
@@ -124,6 +122,39 @@ h1 {
   margin: 2px 30%;
   padding: 5px;
 }
+
+.no-bullet {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Week 4 */
+.notice {
+  color: rgb(184, 194, 0);
+  list-style: none;
+  background-color: rgba(0, 0, 0, 0.747);
+  padding: .5rem;
+  border-radius: 3px;
+}
+.notice li::before {
+  content: "> ";
+}
+
+/* Inventory display */
+/* 
+#inventoryDisplay tr td:nth-child(1) {
+  width: auto;
+}
+#inventoryDisplay tr td:nth-child(2) {
+  width: 75px;
+  text-align: end;
+}
+#inventoryDisplay tr td:nth-child(3) {
+  width: 75px;
+  text-align: end;
+} */
+
 
 .hero-banner {
   margin-top: 20px;
@@ -190,6 +221,160 @@ h1 {
   padding: 10px;
   margin: 10px 0;
   font-size: 1.5rem;
+}
+
+
+/* Login Page Styles */
+.login-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  height: auto; /* Allow height to adjust based on content */
+  padding: 20px;
+  margin-top: 10px; /* Bring the login section closer to the nav */
+}
+
+.login-page h1 {
+  font-size: 36px; /* Adjust the title size */
+    margin-bottom: 15px; /* Reduced space below the title */
+    text-align: center; /* Center title text */
+    font-family: 'Georgia', serif;  /* Better font for the title */
+}
+
+.login-page form {
+  background-color: #f9f9f9; /* Light background for the form */
+    border: 1px solid #ddd; /* Border around the form */
+    border-radius: 8px; /* Rounded corners */
+    padding: 30px; /* Padding inside the form */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 700px; /* Adjusted max width for form (60-70% of typical desktop width) */
+    width: 100%; /* Full width for smaller screens */
+    margin: 20px 0; /* Margin above and below the form */
+}
+.login-page form div {
+  margin-bottom: 15px; /* Space between input fields */
+}
+
+.login-page label {
+  display: block; /* Ensure labels take up full width */
+  margin-bottom: 5px; /* Space below labels */
+  font-weight: bold; /* Bold labels */
+}
+
+.login-page input[type="email"],
+.login-page input[type="password"] {
+  width: 100%; /* Full width input fields */
+  padding: 10px; /* Padding inside input fields */
+  border: 1px solid #ddd; /* Border for input fields */
+  border-radius: 5px; /* Rounded corners for inputs */
+}
+
+.login-page button {
+  background-color: #0073A8; /* Button color */
+  color: white; /* Button text color */
+  padding: 10px; /* Padding inside button */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners for button */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Font size for button text */
+  width: 100%; /* Full width button */
+}
+
+.login-page button:hover {
+  background-color: #005f7f; /* Darker color on hover */
+}
+
+.login-page p {
+  margin-top: 20px; /* Space above the paragraph */
+  text-align: center; /* Center registration link */
+}
+
+.login-page a {
+  color: #0073A8; /* Link color */
+  text-decoration: none; /* Remove underline from link */
+}
+
+.login-page a:hover {
+  text-decoration: underline; /* Underline link on hover */
+}
+
+
+
+/* Registration page */
+.registration-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center horizontally */
+  justify-content: center; /* Center vertically */
+  height: auto; /* Allow height to adjust based on content */
+  padding: 20px;
+  margin-top: 10px; /* Bring the login section closer to the nav */
+}
+
+.registration-page h1 {
+  font-size: 36px; /* Adjust the title size */
+    margin-bottom: 15px; /* Reduced space below the title */
+    text-align: center; /* Center title text */
+    font-family: 'Georgia', serif;  /* Better font for the title */
+}
+
+.registration-page form {
+  background-color: #f9f9f9; /* Light background for the form */
+    border: 1px solid #ddd; /* Border around the form */
+    border-radius: 8px; /* Rounded corners */
+    padding: 30px; /* Padding inside the form */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 700px; /* Adjusted max width for form (60-70% of typical desktop width) */
+    width: 100%; /* Full width for smaller screens */
+    margin: 20px 0; /* Margin above and below the form */
+}
+.registration-page form div {
+  margin-bottom: 15px; /* Space between input fields */
+}
+
+.registration-page label {
+  display: block; /* Ensure labels take up full width */
+  margin-bottom: 5px; /* Space below labels */
+  font-weight: bold; /* Bold labels */
+}
+
+.registration-page input[type="text"],
+.registration-page input[type="email"] 
+.registration-page input[type="password"]{
+  width: 100%; /* Full width input fields */
+  padding: 10px; /* Padding inside input fields */
+  border: 1px solid #ddd; /* Border for input fields */
+  border-radius: 5px; /* Rounded corners for inputs */
+}
+
+.registration-page button {
+  background-color: #0073A8; /* Button color */
+  color: white; /* Button text color */
+  padding: 10px; /* Padding inside button */
+  border: none; /* Remove border */
+  border-radius: 5px; /* Rounded corners for button */
+  cursor: pointer; /* Pointer cursor on hover */
+  font-size: 16px; /* Font size for button text */
+  width: 100%; /* Full width button */
+}
+
+.registration-page button:hover {
+  background-color: #005f7f; /* Darker color on hover */
+}
+
+.registration-page p {
+  margin-top: 20px; /* Space above the paragraph */
+  text-align: center; /* Center registration link */
+}
+
+.registration-page a {
+  color: #0073A8; /* Link color */
+  text-decoration: none; /* Remove underline from link */
+}
+
+.registration-page a:hover {
+  text-decoration: underline; /* Underline link on hover */
 }
 
 /* Inventory display grid */
@@ -306,6 +491,11 @@ footer {
   font-size: 15px;
 }
 
+.hidden-error {
+  display: none; /* Hides the element completely */
+}
+
+
 @media (max-width: 768px) {
   #top-header {
     padding: 10px 15px;
@@ -320,6 +510,33 @@ footer {
     font-size: 14px; 
   }
 
+  /* Login page */
+  .login-page {
+    padding: 15px; /* Reduced padding for mobile */
+}
+
+.login-page h1 {
+    font-size: 28px; /* Smaller title size for mobile */
+}
+
+.login-page form {
+    padding: 20px; /* Less padding for mobile form */
+    max-width: 90%; /* Use more width on mobile */
+}
+
+/* Registration page */
+.registration-page {
+  padding: 15px; /* Reduced padding for mobile */
+}
+
+.registration-page h1 {
+  font-size: 28px; /* Smaller title size for mobile */
+}
+
+.registration-page form {
+  padding: 20px; /* Less padding for mobile form */
+  max-width: 90%; /* Use more width on mobile */
+}
   h1 {
     font-size: 25px;
   }
