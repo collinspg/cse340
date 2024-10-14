@@ -83,7 +83,7 @@ invCont.buildManagementView = async function (req, res, next) {
 invCont.buildAddClassification = async function (req, res, next) {
   let nav = await utilities.getNav();
 
-  res.render("inventory/add-classification", {
+  res.render("inventory/addClassification", {
     title: "Add New Classification",
     nav,
     errors: null,
@@ -132,7 +132,7 @@ invCont.buildAddInventory = async function (req, res, next) {
   const nav = await utilities.getNav();
   let classifications = await utilities.buildClassificationList();
 
-  res.render("inventory/add-inventory", {
+  res.render("inventory/addInventory", {
     title: "Add Vehicle",
     errors: null,
     nav,
@@ -190,7 +190,7 @@ invCont.addInventory = async function (req, res, next) {
   } else {
     // This seems to never get called. Is this just for DB errors?
     req.flash("notice", "There was a problem.");
-    res.render("inventory/add-inventory", {
+    res.render("inventory/addInventory", {
       title: "Add Vehicle",
       nav,
       errors: null,
@@ -229,7 +229,7 @@ invCont.buildEditInventory = async function (req, res, next) {
 
   let classifications = await utilities.buildClassificationList(inventoryData.classification_id);
 
-  res.render("inventory/edit-inventory", {
+  res.render("inventory/editInventory", {
     title: "Edit " + name,
     errors: null,
     nav,
@@ -295,7 +295,7 @@ invCont.updateInventory = async function (req, res, next) {
     );
     const itemName = `${inv_make} ${inv_model}`;
     req.flash("notice", "Sorry, the update failed.");
-    res.status(501).render("inventory/edit-inventory", {
+    res.status(501).render("inventory/editInventory", {
       title: "Edit " + itemName,
       nav,
       errors: null,
@@ -374,7 +374,7 @@ invCont.deleteInventory = async function (req, res, next) {
     // );
 
     req.flash("notice", "Sorry, the update failed.");
-    res.status(501).render("inventory/delete-inventory", {
+    res.status(501).render("inventory/deleteInventory", {
       title: "Delete " + itemName,
       nav,
       errors: null,
