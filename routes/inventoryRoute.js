@@ -1,38 +1,89 @@
-// Needed Resources 
 const express = require("express");
-const router = new express.Router() ;
+const router = express.Router();
 const invController = require("../controllers/invController");
-const utilities = require("../utilities");
-const invValidate = require("../utilities/inventory-validation");
+const utilities = require("../utilities/");
+const validation = require("../utilities/account-validation");
 
-
-// Route middleware for management functionality //TODO: Disable management screen
-//router.use(["/add-classification", "/add-inventory", "/edit/:inventoryId", "/update", "/delete/:inventoryId", "/delete/",], utilities.checkLogin);
-router.use(["/add-classification", "/add-inventory", "/edit/:inventoryId", "/update", "/delete/:inventoryId", "/delete/",], utilities.checkAuthorizationManager);
-
-// Misc. routes
 // Route to build inventory by classification view
-router.get("/", utilities.checkAuthorizationManager ,utilities.handleErrors(invController.buildManagementView)); // Had to put checkAuthorizationManager here too. Didn't work above
-router.get("/type/:classificationId", utilities.handleErrors(invController.buildByClassificationId));
-router.get("/detail/:inventoryId", utilities.handleErrors(invController.buildByInventoryId));
+router.get("/type/:classificationId", invController.buildByClassificationId);
 
-// Classification management routes
-router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification));
-router.post("/add-classification", invValidate.classificationRules(), invValidate.checkClassificationData, utilities.handleErrors(invController.addClassification)); // ...through the appropriate router, where server-side validation middleware is present,... 
+// Route to build vehicle detail view
+router.get("/detail/:vehicleId", invController.buildVehicleDetail);
 
-// Inventory management routes
-router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventory));
-router.post("/add-inventory", invValidate.inventoryRules(), invValidate.checkInventoryData, utilities.handleErrors(invController.addInventory));
+// Route to build inventory management view
+router.get("/", invController.buildManagementView);
 
-// Build edit/update inventory views
-router.get("/edit/:inventoryId", utilities.handleErrors(invController.buildEditInventory));
-router.post("/update/", invValidate.inventoryRules(), invValidate.checkUpdateData, utilities.handleErrors(invController.updateInventory));
+// Route to build classification view
+router.get(
+  "/add-classification",
+  utilities.handleError(invController.buildAddClassificationView)
+);
 
-// Delete vehicle information routes
-router.get("/delete/:inventoryId", utilities.handleErrors(invController.buildDeleteInventory));
-router.post("/delete/", utilities.handleErrors(invController.deleteInventory));  // Don't need validation
+router.get(
+  "/getInventory/:classification_id",
+  utilities.handleError(invController.getInventoryJSON)
+);
 
-// AJAX inventory api call route
-router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON))
+// Route to build inventory  view
+router.get(
+  "/add-inventory",
+  utilities.handleError(invController.buildAddInventoryView)
+);
+
+// Route to build edit inventory view
+router.get(
+  "/edit/:inv_id",
+  utilities.handleError(invController.editInventoryView)
+);
+
+// Route to process deleting an inventory item
+router.get(
+  "/delete/:inv_id",
+  utilities.handleError(invController.buildDeleteConfirmation)
+);
+
+// Route to process adding a classification
+router.post(
+  "/add-classification",
+  validation.classificationRules(),
+  validation.checkClassificationData,
+  utilities.handleError(invController.addClassification)
+);
+
+// Route to process adding an inventory item
+router.post(
+  "/add-inventory",
+  validation.vehicleRules(),
+  validation.checkVehicleData,
+  utilities.handleError(invController.addInventory)
+);
+
+// Route to process deleting an inventory item
+router.post(
+  "/delete",
+  utilities.handleError(invController.deleteInventoryItem)
+);
+
+// Route to handle the update request
+router.post(
+  "/update",
+  validation.vehicleRules(),
+  validation.checkUpdateData,
+  utilities.handleError(invController.updateInventory)
+);
+
+// Route to process adding a comment
+router.post(
+  "/comment",
+  utilities.checkLoginComment,
+  validation.commentRules(),
+  validation.checkCommentData,
+  utilities.handleError(invController.sendComment)
+);
+
+// Route for error testing
+router.get("/cause-error", (req, res, next) => {
+  next(new Error("Intentional error for testing purposes"));
+});
 
 module.exports = router;

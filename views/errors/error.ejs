@@ -1,5 +1,7 @@
-<div class="error-display">
-    <h2><%- title %></h2>
+<% if (title) { %>
+    <h1><%= title %></h1>
+    <!-- error in title puting equal at end =%>, now fixed -->
+    <% } else { res.redirect('/') } %>
+    
     <p><%- message %></p>
-    <img src="/images/site/error.svg" alt="error">
-</div>
+    <!-- error to put message out of p -->

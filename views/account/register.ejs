@@ -1,33 +1,100 @@
-<h1><%- title %></h1>
-<%- messages() %>
-<% if (errors) { %>
-    <ul class="notice">
-   <% errors.array().forEach(error => { %>
-     <li><%= error.msg %></li>
-  <%  }) %>
-   </ul>
-  <% } %>
-
-<form class="input-box" action="/account/register" method="post">
-    <label>First name<input type="text" name="account_firstname" required autocomplete="given-name" value="<%= locals.account_firstname %>"></label>
-    <label>Last name<input type="text" name="account_lastname" required autocomplete="family-name" value="<%= locals.account_lastname %>"></label>
-    <label>Email address<input type="email" name="account_email" required autocomplete="email" value="<%= locals.account_email %>"></label>
-    <label>Password<input type="password" name="account_password" id="password" required autocomplete="new-password" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[^\w\s]).{12,}$"><span class="reveal-button active" id="passwordHide">hide password</span></label>
-    <span class="fine-print">Password must be 12 characters or longer, contain 1 capital letter, 1 number and 1 special character</span>
-    <input type="submit" value="REGISTER">
-</form>
-<!-- Script to handle hiding and revealing password field -->
-<script>
-    const passwordInput = document.querySelector("#password");
-    const passwordHide = document.querySelector("#passwordHide");
-    passwordHide.addEventListener("click", () => {
-        if(passwordInput.getAttribute("type") == "password" ) {
-            passwordInput.setAttribute("type", "text");
-            passwordHide.classList.remove("active");
-        }
-        else {
-            passwordInput.setAttribute("type", "password");
-            passwordHide.classList.add("active");
-        }
-    })
-</script>
+<div class="container">
+    <div class="hero-content">
+      <div class="text-center">
+        <h1>Sign Up</h1>
+        <p>Create an account to enjoy our services.</p>
+      </div>
+      <div class="card">
+        <form class="card-body" action="/account/register" method="post">
+          <fieldset>
+            <p><i>All fields are required.</i></p>
+            <%- messages() %> <% if (errors) { %>
+            <ul class="notice">
+              <% errors.array().forEach(error => { %>
+              <li><%= error.msg %></li>
+              <% }) %>
+            </ul>
+            <% } %>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">First Name</span>
+              </label>
+              <input
+                type="text"
+                name="account_firstname"
+                placeholder="First Name"
+                required
+                value="<%= locals.account_firstname %>"
+              />
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Last Name</span>
+              </label>
+              <input
+                type="text"
+                name="account_lastname"
+                placeholder="Last Name"
+                required
+                value="<%= locals.account_lastname %>"
+              />
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Email</span>
+              </label>
+              <input
+                type="email"
+                name="account_email"
+                placeholder="Email"
+                required
+                value="<%= locals.account_email %>"
+              />
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Password</span>
+              </label>
+              <input
+                type="password"
+                name="account_password"
+                placeholder="Password"
+                required
+                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+                id="password"
+              />
+            </div>
+            <div class="form-control">
+              <label class="label">
+                <span class="label-text">Confirm Password</span>
+              </label>
+              <input
+                type="password"
+                name="account_passwordConfirm"
+                placeholder="Confirm Password"
+                required
+                pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{12,}$"
+              />
+            </div>
+            <div class="leftPswrd">
+              <span id="pswdBtn">Show Password</span>
+            </div>
+            <div>
+              <p>
+                <i>
+                  Please make sure the password is at least 12 characters and has
+                  at least 1 uppercase character, 1 number and 1 special
+                  character.
+                </i>
+              </p>
+            </div>
+            <div class="form-control mt-6">
+              <button type="submit" class="btn">Sign Up</button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <script src="/js/password.js"></script>

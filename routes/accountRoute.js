@@ -1,49 +1,74 @@
-// Needed Resources
 const express = require("express");
-const router = new express.Router();
-
+const router = express.Router();
+const utilities = require("../utilities/");
+const errorHandlers = require("../middleware/errorHandler");
 const accountController = require("../controllers/accountController");
-const utilities = require("../utilities");
 const regValidate = require("../utilities/account-validation");
 
-
-router.get("/", utilities.checkLogin, utilities.handleErrors(accountController.buildAccountManagementView));
-
 // Route to build account view
-router.get("/login", utilities.handleErrors(accountController.buildLogin));
+router.get("/login", utilities.handleError(accountController.buildLogin));
+
+// Route to build register view
+router.get("/register", utilities.handleError(accountController.buildRegister));
+
+// Route to account management view
+router.get(
+  "/",
+  utilities.checkLogin,
+  utilities.handleError(accountController.buildManagement)
+);
+
+// Route to build update account view
+router.get("/update", utilities.handleError(accountController.buildUpdateAccount))
+
+//Update Account Type only Admin
+router.get(
+    "/accounttype",
+    utilities.adminType, 
+    utilities.handleError(accountController.buildAccountType))
+
+//Logout Account
+router.get("/logout", accountController.logoutAccount)
+
+//Update Account Type only Admin
+router.get(
+    "/accounttype",
+    utilities.adminType, 
+    utilities.handleError(accountController.buildAccountType))
+
+// Route to process registration
+router.post(
+  "/register",
+  regValidate.registationRules(),
+  regValidate.checkRegData,
+  utilities.handleError(accountController.registerAccount)
+);
+
+// Route to process login
 router.post(
   "/login",
   regValidate.loginRules(),
-  regValidate.checkLoginData,
-  utilities.handleErrors(accountController.accountLogin)
+  regValidate.checkLogData,
+  utilities.handleError(accountController.accountLogin)
 );
 
-// Route to logout
-router.get("/logout", utilities.handleErrors(accountController.accountLogout));
-
-// Registration handlers
-router.get("/registration", utilities.handleErrors(accountController.buildRegister));
+// Update account from register page
 router.post(
-  "/register",
-  regValidate.registrationRules(),
-  regValidate.checkRegData,
-  utilities.handleErrors(accountController.registerAccount)
-);
+    "/update",
+    regValidate.updateAccountRules(),
+    regValidate.checkUpdAccData, 
+    utilities.handleError(accountController.updateAccount))
 
-// Update account handlers
-router.get("/update/:accountId", utilities.handleErrors(accountController.buildUpdate));
 router.post(
-  "/update",
-  regValidate.updateRules(), // TODO: This needs to have a separate rule set, without existing email check..unless...oh complex
-  regValidate.checkUpdateData,
-  utilities.handleErrors(accountController.updateAccount)
-  );
-router.post(
-  "/update-password",
-  regValidate.updatePasswordRules(),
-  regValidate.checkUpdatePasswordData,
-  utilities.handleErrors(accountController.updatePassword)
-);
+    "/updatetype",
+    utilities.adminType,
+    regValidate.updateTypeRules(),
+    regValidate.checkUpdateTypeData,
+    utilities.handleError(accountController.updateType))
 
+
+router.use(utilities.checkJWTToken)
+// Error handler
+router.use(errorHandlers);
 
 module.exports = router;
