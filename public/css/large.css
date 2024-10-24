@@ -144,3 +144,22 @@
 }
 
 /* ************* HEADER AND NAVIGATION ************ */
+@media only screen and (max-width: 600px) {
+  div {
+   
+    font-size: 14px; /* Reduce text size if needed */
+  }
+
+  h3 {
+    font-size: 18px; /* Adjust heading size */
+  }
+
+  ul {
+    margin: 0; /* Reduce margin to save space */
+  }
+
+  a {
+    display: inline-block; /* Adjust the button size if needed */
+    padding: 5px 10px; /* Adjust link/button padding */
+  }
+}

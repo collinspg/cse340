@@ -13,7 +13,7 @@ const session = require("express-session");
 const pool = require("./database/");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
-
+const maintenanceRoute = require('./routes/maintenanceRoute');
 const static = require("./routes/static");
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
@@ -74,6 +74,8 @@ app.use("/inv", inventoryRoute);
 app.use("/account", accountRoute);
 // Error handler
 app.use(errorHandler);
+// Add route handling for maintenance
+app.use('/maintenance', maintenanceRoute);
 
 /* ***********************
  * Local Server Information
