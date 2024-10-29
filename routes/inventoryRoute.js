@@ -12,7 +12,7 @@ router.get("/detail/:vehicleId", invController.buildVehicleDetail);
 
 // Route to build inventory management view
 // Route to build inventory management view
-router.get("/management", invController.buildManagementView);
+router.get('/', invController.buildManagementView);
 
 
 // Route to build classification view
