@@ -428,12 +428,15 @@
   .form-control.mt-6 {
     margin-top: 1.5rem;
   }
+  #pswdBtn{
+    color: black;
+  }
   .btn {
     display: inline-block;
     padding: 0.75rem 1.25rem;
     border-radius: 4px;
     background-color: var(--primary-color-variant-2);
-    color: black;
+    color: white;
     text-align: center;
     cursor: pointer;
     border: none;

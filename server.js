@@ -17,6 +17,7 @@ const static = require("./routes/static");
 const baseController = require("./controllers/baseController");
 const inventoryRoute = require("./routes/inventoryRoute");
 const accountRoute = require("./routes/accountRoute");
+const feedbackRoute = require('./routes/feedbackRoute');
 const errorHandler = require("./middleware/errorHandler");
 const utilities = require("./utilities/");
 
@@ -71,6 +72,8 @@ app.get("/", baseController.buildHome);
 app.use("/inv", inventoryRoute);
 // Account route
 app.use("/account", accountRoute);
+// feedback Route
+app.use(feedbackRoute);
 // Error handler
 app.use(errorHandler);
 
